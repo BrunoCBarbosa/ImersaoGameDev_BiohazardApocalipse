@@ -61,7 +61,7 @@ class Game{
     }
     if(boy.isColliding(enemy)){
       soundDeath.play();
-      // sound.stop();
+      soundCity.stop();
       // soundWind.stop();
       soundGameOver.loop();
       image(imageGameOver, width/2 - 200, height/3);

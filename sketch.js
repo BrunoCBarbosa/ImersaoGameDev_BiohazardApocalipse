@@ -8,8 +8,7 @@ function setup() {
   frameRate(19);
   
   //Charge the game sound
-  //sound.loop();
-  //soundWind.loop();
+  soundCity.loop();
   
   //instantiate class game and load setup from class game
   game = new Game();
