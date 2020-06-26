@@ -12,6 +12,7 @@ let imageZombieMohawk;
 let imageGameOver;
 let imageBee;
 let imageCoin;
+let imageLife;
 
 let soundMainScreen;
 let soundIntro;
@@ -34,7 +35,9 @@ let leftBee;
 let score;
 let coin
 let isDead = false;
-let currentEnemy;
+let enemyIndex;
+let life;
+let manipulateMapping;
 
 let currentScene = 'mainScreen';
 let scenes;

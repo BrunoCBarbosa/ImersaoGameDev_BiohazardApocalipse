@@ -1,0 +1,25 @@
+{   
+    "characterSettings":{
+        "maximumLife" : 3,
+        "startLife" : 3
+    },
+
+    "mapping" : [
+        {
+            "enemy": 0,
+            "enemySpeed": 8
+        },
+        {
+            "enemy": 0,
+            "enemySpeed": 9
+        },
+        {
+            "enemy": 0,
+            "enemySpeed": 12
+        },
+        {
+            "enemy": 1,
+            "enemySpeed": 40
+        }
+    ]
+}

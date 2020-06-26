@@ -15,6 +15,7 @@ function preload() {
     imageMainScreen = loadImage('assets/images/assets/main_menu_background.png');   
     fontMainScreen = loadFont('assets/images/assets/fonteTelaInicial.otf ');   
     imageGameOver = loadImage('assets/images/assets/game-over.png');
+    imageLife = loadImage('assets/images/assets/coracao.png');
     
     imageBee = loadImage('assets/images/others/bee.png');
 
@@ -33,5 +34,8 @@ function preload() {
     soundCoin = loadSound('assets/sounds/fx/coin.mp3');
     
     soundWind = loadSound('assets/sounds/other/wind.mp3');
+
+    //Json
+    manipulateMapping = loadJSON('mapping.json');
 }
   

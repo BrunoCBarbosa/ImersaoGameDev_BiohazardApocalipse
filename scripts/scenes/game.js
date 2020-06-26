@@ -1,6 +1,7 @@
 class Game{
   constructor(){
-      currentEnemy = 0;
+      enemyIndex = 0;
+      this.mapping = manipulateMapping.mapping
   }
   setup(){
      //Charge the game sound
@@ -19,11 +20,14 @@ class Game{
       coin = new Item(matrixCoin, imageCoin, width, 200, 50, 50, 150, 150, 5, 2000);
     
       //enemies 
-      const zombieNormalMan = new Enemy(matrixZombieNormalMan, imageZombieNormalMan, soundZombieNormalMan, width, 30, 110, 150, 250, 465, 9, 100);
-      const zombieMohawk = new Enemy(matrixZombieMohawk, imageZombieMohawk, soundZombieMohawk, width, 30, 110, 150, 330, 465, 15, 100);
+      const zombieNormalMan = new Enemy(matrixZombieNormalMan, imageZombieNormalMan, soundZombieNormalMan, width, 30, 110, 150, 250, 465, 9);
+      const zombieMohawk = new Enemy(matrixZombieMohawk, imageZombieMohawk, soundZombieMohawk, width, 30, 110, 150, 330, 465, 15);
       
       enemies.push(zombieNormalMan);
       enemies.push(zombieMohawk);
+
+      // //instantiate life
+      life = new Life(manipulateMapping.characterSettings.maximumLife, manipulateMapping.characterSettings.startLife);
 
   }
   
@@ -37,6 +41,10 @@ class Game{
     //call scenario methods
     scenario.show();
     scenario.move();
+
+    //call life methods
+    life.draw();
+
     //call score methods
     score.show();
     score.addScore();
@@ -50,31 +58,44 @@ class Game{
     leftBee.move()
         
     // call enemy methods
-    const enemy = enemies[currentEnemy];
+    const currentLine = this.mapping[enemyIndex];
+    const enemy = enemies[currentLine.enemy];
     const visibleEnemy = enemy.charX < -enemy.charWidth;
-        
+    
+    enemy.speed = currentLine.enemySpeed;
+ 
     enemy.show();
     enemy.move();
     
     if(visibleEnemy){
-      currentEnemy++;
+      enemyIndex++;
+
+      enemy.appear();
    
-      if(currentEnemy > 1){
-        currentEnemy = 0;
+      if(enemyIndex > this.mapping.length - 1){
+        enemyIndex = 0;
       }
-      // enemy.speed = parseInt(random(10,20));
-      
     }
     
     if(boy.isColliding(enemy)){
+      life.looseLife();   
+      boy.beInvencible();
       soundDeath.play();
-      soundCity.stop();
-      // soundWind.stop();
-      soundGameOver.loop();
-      isDead = true;
-      image(imageGameOver, width/2 - 200, height/3);
-      this._button();
-      noLoop();
+        
+      //game over
+      if(life.lifes === 0){
+        soundCity.stop();
+        soundWind.stop();
+        soundGameOver.loop();
+        
+        isDead = true;
+        
+        image(imageGameOver, width/2 - 200, height/3);
+        
+        this._button();
+        
+        noLoop();
+      }
     }
 
     //call coin method
