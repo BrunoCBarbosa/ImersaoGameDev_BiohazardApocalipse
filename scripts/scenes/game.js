@@ -1,6 +1,6 @@
 class Game{
   constructor(){
-      this.currentEnemy = 0;
+      currentEnemy = 0;
   }
   setup(){
      //Charge the game sound
@@ -24,12 +24,19 @@ class Game{
       
       enemies.push(zombieNormalMan);
       enemies.push(zombieMohawk);
+
   }
   
   keyPressed(key){
     if(key === 'ArrowUp'){
         boy.jump();
     }
+
+    // if(isDead && keyCode==ENTER){
+    //   isDead = false
+    //   restart();
+    //   loop();
+    // }
   }
   
   draw(){
@@ -49,17 +56,17 @@ class Game{
     leftBee.move()
         
     // call enemy methods
-    const enemy = enemies[this.currentEnemy];
+    const enemy = enemies[currentEnemy];
     const visibleEnemy = enemy.charX < -enemy.charWidth;
         
     enemy.show();
     enemy.move();
     
     if(visibleEnemy){
-      this.currentEnemy++;
+      currentEnemy++;
    
-      if(this.currentEnemy > 1){
-        this.currentEnemy = 0;
+      if(currentEnemy > 1){
+        currentEnemy = 0;
       }
       // enemy.speed = parseInt(random(10,20));
       
@@ -70,7 +77,9 @@ class Game{
       soundCity.stop();
       // soundWind.stop();
       soundGameOver.loop();
+      isDead = true;
       image(imageGameOver, width/2 - 200, height/3);
+      this._button();
       noLoop();
     }
 
@@ -83,5 +92,12 @@ class Game{
       soundCoin.play();
     }
 
+  }
+
+  _button(){
+  
+    this.restartButton = new ButtonManager('Restart', width/2.2, height/2);
+      
+    this.restartButton.draw();
   }
 }

@@ -9,8 +9,15 @@ class ButtonManager{
        
         if(currentScene === 'mainScreen'){
             this.button.mousePressed(() => this._goIntro());
-        }else{
+        }
+        
+        else if(currentScene === 'intro'){
             this.button.mousePressed(() => this._startGame());
+        }
+
+        else{
+            
+            this.button.mousePressed(() => this._restartStage());
         }
     }
 
@@ -38,5 +45,10 @@ class ButtonManager{
         this.button.remove();
         currentScene = 'game';
         game.setup(); 
+    }
+
+    _restartStage(){
+        this.button.remove();
+        restart();
     }
 }

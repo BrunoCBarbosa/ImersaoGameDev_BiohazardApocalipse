@@ -32,6 +32,8 @@ let boy;
 let leftBee;
 let score;
 let coin
+let isDead = false;
+let currentEnemy;
 
 let currentScene = 'mainScreen';
 let scenes;

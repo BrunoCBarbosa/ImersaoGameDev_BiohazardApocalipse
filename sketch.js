@@ -1,5 +1,3 @@
-
-
 function setup() {
   //canvas is the screem and windowWidth and Heigth will be in full screen
   createCanvas(windowWidth, windowHeight);
