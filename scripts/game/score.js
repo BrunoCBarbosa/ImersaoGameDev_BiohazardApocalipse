@@ -7,8 +7,14 @@ class Score {
   
   show(){
     textAlign(RIGHT);
-    fill('#FFF');
+    this._text();
+  }
+
+  _text(){
+    textSize(50)
+    text("Score: ", width - 110, 50)
     textSize(50);
+    fill('#FFF');
     text(parseInt(this.score), width - 30, 50);
   }
   
