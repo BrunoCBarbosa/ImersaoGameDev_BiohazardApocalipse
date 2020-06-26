@@ -60,16 +60,19 @@ class Game{
     // call enemy methods
     const currentLine = this.mapping[enemyIndex];
     const enemy = enemies[currentLine.enemy];
-    const visibleEnemy = enemy.charX < -enemy.charWidth;
+    const visibleEnemy = enemy.charX  < -enemy.charWidth;
     
     enemy.speed = currentLine.enemySpeed;
- 
     enemy.show();
     enemy.move();
+     
+     
     
+      
     if(visibleEnemy){
       enemyIndex++;
-
+      
+       
       enemy.appear();
    
       if(enemyIndex > this.mapping.length - 1){
@@ -105,6 +108,7 @@ class Game{
     if(boy.isItemColliding(coin)){
       score.addCoinScore()
       soundCoin.play();
+      coin.charX = -10*coin.charHeight
     }
 
   }
