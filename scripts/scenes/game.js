@@ -3,6 +3,9 @@ class Game{
       this.currentEnemy = 0;
   }
   setup(){
+     //Charge the game sound
+      soundMainScreen.stop();
+      soundCity.loop()
       //instantiate a new Scenario to scenario
       scenario = new Scenario(imageBackGroundCity, 3);
 

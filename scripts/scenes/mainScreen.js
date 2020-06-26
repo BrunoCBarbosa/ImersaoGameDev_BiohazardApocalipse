@@ -3,6 +3,10 @@ class MainScreen{
 
     }
 
+    setup(){
+        soundMainScreen.loop()
+    }
+
     draw(){
         this._imageBackground();
         this._text();

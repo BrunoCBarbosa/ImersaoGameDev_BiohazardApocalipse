@@ -7,16 +7,13 @@ function setup() {
   //control the game framerate
   frameRate(19);
   
-  //Charge the game sound
-  soundCity.loop();
   
-  //instantiate class game and load setup from class game
-  game = new Game();
-  game.setup(); 
-
   //instantiate Main Screen
   mainScreen = new MainScreen();
-
+  mainScreen.setup();  
+  
+  game = new Game();
+  
   //object scene have game:game, mainScreen:mainScreen
   scenes = {
     game,
@@ -33,3 +30,4 @@ function keyPressed(){
 function draw() {
   scenes[currentScene].draw();
 }
+
