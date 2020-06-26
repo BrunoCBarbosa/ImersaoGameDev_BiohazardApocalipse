@@ -1,4 +1,8 @@
 //global variables
+let imageIntro1;
+let imageIntro2;
+let imageIntro3;
+let imageIntro4;
 let imageBackGroundCity;
 let imageBackGroundSubway;
 let imageMainScreen;
@@ -16,6 +20,8 @@ let soundDeath;
 let soundWind;
 let soundGameOver;
 let soundCoin;
+let soundZombieNormalMan;
+let soundZombieMohawk;
 
 let buttonManager;
 let fontMainScreen;
@@ -113,3 +119,4 @@ const matrixCoin = [
 ];
 
 const enemies = [];
+// let intro = [];

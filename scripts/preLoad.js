@@ -1,7 +1,11 @@
 //function that load before everythings
 function preload() {
-    imageBackGroundCity = loadImage('assets/images/backgrounds/city.png');
-    imageBackGroundSubway = loadImage('assets/images/backgrounds/subway.png');
+    imageIntro1 = loadImage('assets/images/backgrounds/intro/intro1.png');
+    imageIntro2 = loadImage('assets/images/backgrounds/intro/intro2.jpg');
+    imageIntro3 = loadImage('assets/images/backgrounds/intro/intro3.jpg');
+    imageIntro4 = loadImage('assets/images/backgrounds/intro/intro4.png');
+    imageBackGroundCity = loadImage('assets/images/backgrounds/stages/city.png');
+    imageBackGroundSubway = loadImage('assets/images/backgrounds/stages/subway.png');
     
     imageBoy = loadImage('assets/images/characters/boy.png');
     
@@ -16,12 +20,17 @@ function preload() {
 
     imageCoin = loadImage('assets/images/items/coin.png');
     
+    //SOUNDS
     soundMainScreen = loadSound('assets/sounds/background/main.mp3');
     soundCity = loadSound('assets/sounds/background/city.mp3');
     soundGameOver = loadSound('assets/sounds/background/game_over.mp3');
+    
+    soundZombieNormalMan = loadSound('assets/sounds/fx/zombie_normal_man.mp3');;
+    soundZombieMohawk = loadSound('assets/sounds/fx/zombie_mohawk.mp3');;
     soundJump = loadSound('assets/sounds/fx/jump.mp3');
     soundDeath = loadSound('assets/sounds/fx/death.mp3');
     soundCoin = loadSound('assets/sounds/fx/coin.mp3');
+    
     soundWind = loadSound('assets/sounds/other/wind.mp3');
 }
   

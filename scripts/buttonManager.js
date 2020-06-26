@@ -6,24 +6,37 @@ class ButtonManager{
 
         this.button = createButton(this.text);
         this.button.addClass(('botao-tela-inicial'));
-        this.button.mousePressed(() => this._updateScene());
+       
+        if(currentScene === 'mainScreen'){
+            this.button.mousePressed(() => this._goIntro());
+        }else{
+            this.button.mousePressed(() => this._startGame());
+        }
     }
 
     setup(){
         //instantiate class game and load setup from class game
         game = new Game();
+
+        intro = new Intro();
   
     }
 
     draw(){
         this.button.position(this.positionX, this.positionY);
-        this.button.center();
+        // this.button.center();
     }
 
-    _updateScene(){
+    _goIntro(){
+        this.button.remove();
+        currentScene = 'intro';
+        intro.setup(); 
+
+    }
+ 
+    _startGame(){
         this.button.remove();
         currentScene = 'game';
         game.setup(); 
-
     }
 }

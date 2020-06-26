@@ -14,7 +14,7 @@ class Character extends Animation{
   }
   
   jump(){
-    if(this.jumps < 2){
+    if(this.jumps < 1){
       this.jumpSpeed = this.jumpHeight;
       this.jumps++;
       soundJump.play(); 

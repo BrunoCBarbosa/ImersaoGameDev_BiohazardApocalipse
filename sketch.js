@@ -6,21 +6,24 @@ function setup() {
   
   //control the game framerate
   frameRate(19);
-  
-  
+
   //instantiate Main Screen
   mainScreen = new MainScreen();
   mainScreen.setup();  
   
+  //instantiate game
   game = new Game();
+
+  intro = new Intro();
   
   //object scene have game:game, mainScreen:mainScreen
   scenes = {
     game,
+    intro,
     mainScreen
   };
 
-  buttonManager = new ButtonManager('Start', width/2, height/2);
+  buttonManager = new ButtonManager('Start', width/2.2, height/2.5);
 }
 
 function keyPressed(){

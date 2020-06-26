@@ -27,6 +27,7 @@ class MainScreen{
     }
 
     _button(){
+        
         buttonManager.draw();
     }
 }

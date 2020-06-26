@@ -19,8 +19,8 @@ class Game{
       coin = new Item(matrixCoin, imageCoin, width, 200, 50, 50, 150, 150, 5, 2000);
     
       //enemies 
-      const zombieNormalMan = new Enemy(matrixZombieNormalMan, imageZombieNormalMan, width, 30, 110, 150, 250, 465, 10, 100);
-      const zombieMohawk = new Enemy(matrixZombieMohawk, imageZombieMohawk, width, 30, 110, 150, 330, 465, 10, 100);
+      const zombieNormalMan = new Enemy(matrixZombieNormalMan, imageZombieNormalMan, soundZombieNormalMan, width, 30, 110, 150, 250, 465, 9, 100);
+      const zombieMohawk = new Enemy(matrixZombieMohawk, imageZombieMohawk, soundZombieMohawk, width, 30, 110, 150, 330, 465, 15, 100);
       
       enemies.push(zombieNormalMan);
       enemies.push(zombieMohawk);
@@ -54,14 +54,17 @@ class Game{
         
     enemy.show();
     enemy.move();
+    
     if(visibleEnemy){
       this.currentEnemy++;
-    
+   
       if(this.currentEnemy > 1){
         this.currentEnemy = 0;
       }
       // enemy.speed = parseInt(random(10,20));
+      
     }
+    
     if(boy.isColliding(enemy)){
       soundDeath.play();
       soundCity.stop();
