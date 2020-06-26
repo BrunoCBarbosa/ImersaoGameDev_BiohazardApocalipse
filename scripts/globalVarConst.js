@@ -14,6 +14,7 @@ let imageBee;
 let imageCoin;
 
 let soundMainScreen;
+let soundIntro;
 let soundCity;
 let soundJump;
 let soundDeath;

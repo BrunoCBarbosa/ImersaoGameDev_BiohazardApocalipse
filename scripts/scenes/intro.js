@@ -5,7 +5,8 @@ class Intro{
     }
 
     setup(){
-       
+       soundMainScreen.stop();
+       soundIntro.loop();
         // this.buttonNext = new ButtonManager('Próximo', width/2, height/2);
         this.buttonBegin = new ButtonManager('Begin',width/2.2, height/1.4);
 

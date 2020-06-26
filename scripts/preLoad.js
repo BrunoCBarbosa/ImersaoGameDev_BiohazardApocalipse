@@ -22,6 +22,7 @@ function preload() {
     
     //SOUNDS
     soundMainScreen = loadSound('assets/sounds/background/main.mp3');
+    soundIntro = loadSound('assets/sounds/background/intro.mp3')
     soundCity = loadSound('assets/sounds/background/city.mp3');
     soundGameOver = loadSound('assets/sounds/background/game_over.mp3');
     

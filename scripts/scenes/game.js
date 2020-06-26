@@ -4,7 +4,7 @@ class Game{
   }
   setup(){
      //Charge the game sound
-      soundMainScreen.stop();
+      soundIntro.stop();
       soundCity.loop()
       //instantiate a new Scenario to scenario
       scenario = new Scenario(imageBackGroundCity, 3);
@@ -31,12 +31,6 @@ class Game{
     if(key === 'ArrowUp'){
         boy.jump();
     }
-
-    // if(isDead && keyCode==ENTER){
-    //   isDead = false
-    //   restart();
-    //   loop();
-    // }
   }
   
   draw(){
