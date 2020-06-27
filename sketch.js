@@ -7,11 +7,11 @@ function setup() {
 
   //instantiate Main Screen
   mainScreen = new MainScreen();
-  mainScreen.setup();  
+  // mainScreen.setup();  
   
   //instantiate game
   game = new Game();
-
+  game.setup();
   intro = new Intro();
   
   //object scene have game:game, mainScreen:mainScreen

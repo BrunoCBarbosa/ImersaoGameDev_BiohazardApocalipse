@@ -12,6 +12,9 @@ let imageZombieMohawk;
 let imageGameOver;
 let imageBee;
 let imageCoin;
+let imagePotionDoubleJump;
+let imagePotionInvencible;
+let imagePotionLife;
 let imageLife;
 
 let soundMainScreen;
@@ -33,13 +36,19 @@ let scenario;
 let boy;
 let leftBee;
 let score;
-let coin
 let isDead = false;
 let enemyIndex;
 let life;
 let manipulateMapping;
 
-let currentScene = 'mainScreen';
+//items
+let coin;
+let potionDoubleJump;
+let isDoubleJump = false;
+let potionLife;
+let potionInvencible;
+
+let currentScene = 'game';
 let scenes;
 let mainScreen;
 
@@ -123,6 +132,18 @@ const matrixCoin = [
   [600, 0],
   [600, 0]
 ];
+
+const matrixPotionDoubleJump = [
+  [65,65]
+]
+
+const matrixPotionLife = [
+  [65,65]
+]
+
+const matrixPotionInvencible = [
+  [65,65]
+]
 
 const enemies = [];
 // let intro = [];
