@@ -80,10 +80,10 @@ class Game{
     this.objectMapped.speed = currentLine.objectSpeed;
     this.objectMapped.show();
     this.objectMapped.move();
-      
+   
     if(visibleObject){
       this.objectIndex++;
- 
+   
       this.objectMapped.appear();
    
       if(this.objectIndex > this.mapping.length - 1){
@@ -158,7 +158,8 @@ class Game{
     soundCity.loop();
     boy.y  = height - boy.charHeight - boy.charY;
     this.objectMapped.charX = -10*this.objectMapped.charHeight;
-    coin.charX = -10*coin.charHeight
+    coin.charX = -10*coin.charHeight;
+    this.objectIndex = 0
     loop();
   }
 }
