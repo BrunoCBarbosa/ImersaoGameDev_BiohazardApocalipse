@@ -6,20 +6,53 @@
 
     "mapping" : [
         {
-            "enemy": 0,
-            "enemySpeed": 8
+            "object": 0,
+            "objectSpeed": 8
         },
         {
-            "enemy": 0,
-            "enemySpeed": 9
+            "object": 0,
+            "objectSpeed": 9
         },
         {
-            "enemy": 0,
-            "enemySpeed": 12
+            "object": 0,
+            "objectSpeed": 12
         },
         {
-            "enemy": 1,
-            "enemySpeed": 40
+            "object": 2,
+            "objectSpeed": 9
+        },
+        {
+            "object": 1,
+            "objectSpeed": 20
+        },
+        {
+            "object": 0,
+            "objectSpeed": 9
+        },
+        {
+            "object": 3,
+            "objectSpeed": 9
+        },
+        {
+            "object": 1,
+            "objectSpeed": 20
+        },
+        {
+            "object": 4,
+            "objectSpeed": 50
+        },
+        {
+            "object": 0,
+            "objectSpeed": 15
+        
+        },
+        {
+            "object": 1,
+            "objectSpeed": 20
+        },
+        {
+            "object": 1,
+            "objectSpeed": 40
         }
     ]
 }

@@ -37,18 +37,15 @@ let boy;
 let leftBee;
 let score;
 let isDead = false;
-let enemyIndex;
+// let enemyIndex;
 let life;
 let manipulateMapping;
 
 //items
 let coin;
-let potionDoubleJump;
 let isDoubleJump = false;
-let potionLife;
-let potionInvencible;
 
-let currentScene = 'game';
+let currentScene = 'mainScreen';
 let scenes;
 let mainScreen;
 
@@ -135,15 +132,12 @@ const matrixCoin = [
 
 const matrixPotionDoubleJump = [
   [65,65]
-]
+];
 
 const matrixPotionLife = [
   [65,65]
-]
+];
 
 const matrixPotionInvencible = [
   [65,65]
-]
-
-const enemies = [];
-// let intro = [];
+];

@@ -1,9 +1,10 @@
 class Enemy extends Animation{
-  constructor(matrix, image, zombieScream, charX, charY, charWidth, charHeight, spriteWidth, spriteHeight, speed){
+  constructor(matrix, image, zombieScream, charX, charY, charWidth, charHeight, spriteWidth, spriteHeight, speed, type){
     super(matrix, image, charX, charY, charWidth, charHeight, spriteWidth, spriteHeight);
     
     this.speed = speed;
     this.zombieScream = zombieScream;
+    this.type = type;
  
   }
 

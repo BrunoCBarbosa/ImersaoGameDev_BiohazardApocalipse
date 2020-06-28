@@ -16,7 +16,7 @@ class ButtonManager{
         }
 
         if(currentScene === 'game'){
-            this.button.mousePressed(() => this._mainScreen());
+            this.button.mousePressed(() => this._restartStage());
         }
 
         // else{
@@ -58,6 +58,6 @@ class ButtonManager{
 
     _restartStage(){
         this.button.remove();
-        restart();
+        game.restart();
     }
 }
