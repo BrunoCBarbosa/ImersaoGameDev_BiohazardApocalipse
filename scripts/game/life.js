@@ -21,7 +21,7 @@ class Life{
         } 
     }
 
-    earnLife(){
+    lifeUp(){
         if(this.lifes < this.maximumLife){
             this.lifes++;
         }

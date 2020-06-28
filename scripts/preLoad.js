@@ -6,7 +6,7 @@ function preload() {
     imageIntro4 = loadImage('assets/images/backgrounds/intro/intro4.png');
     imageBackGroundCity = loadImage('assets/images/backgrounds/stages/city.png');
     imageBackGroundSubway = loadImage('assets/images/backgrounds/stages/subway.png');
-    
+       
     imageBoy = loadImage('assets/images/characters/boy.png');
     
     imageZombieNormalMan = loadImage('assets/images/enemies/zombie_normal_man.png');
@@ -20,6 +20,9 @@ function preload() {
     imageBee = loadImage('assets/images/others/bee.png');
 
     imageCoin = loadImage('assets/images/items/coin.png');
+    imagePotionDoubleJump = loadImage('assets/images/items/potion_blue.png');
+    imagePotionInvencible = loadImage('assets/images/items/potion_yellow.png');
+    imagePotionLife = loadImage('assets/images/items/potion_red.png');
     
     //SOUNDS
     soundMainScreen = loadSound('assets/sounds/background/main.mp3');

@@ -1,8 +1,12 @@
 class Game{
   constructor(){
-      enemyIndex = 0;
+      this.objectIndex = 0;
+      this.objectMapped;
       this.mapping = manipulateMapping.mapping
+
+      this.objectMappedArray = []
   }
+  
   setup(){
      //Charge the game sound
       soundIntro.stop();
@@ -13,18 +17,25 @@ class Game{
       //instantiate a new Score to score
       score = new Score();
 
-      //instantiate the character
+      //instantiates
       boy = new Character(matrixBoy, imageBoy, 50, 30, 110, 150, 300, 465);
  
       leftBee = new Animal(matrixBeeLeft, imageBee, width -52, 500, 10, 20, 150, 150, 5, 500);
+
       coin = new Item(matrixCoin, imageCoin, width, 200, 50, 50, 150, 150, 5, 2000);
+      const potionDoubleJump = new Potion(matrixPotionDoubleJump, imagePotionDoubleJump, width, 200, 40, 40, 300, 350, 5, 'doubleJump');
+      const potionLife = new Potion(matrixPotionLife, imagePotionLife, width, 200, 40, 40, 300, 350, 5, 'life');
+      const potionInvencible = new Potion(matrixPotionInvencible, imagePotionInvencible, width, 200, 40, 40, 300, 350, 5, 'invencibility');
     
       //enemies 
-      const zombieNormalMan = new Enemy(matrixZombieNormalMan, imageZombieNormalMan, soundZombieNormalMan, width, 30, 110, 150, 250, 465, 9);
-      const zombieMohawk = new Enemy(matrixZombieMohawk, imageZombieMohawk, soundZombieMohawk, width, 30, 110, 150, 330, 465, 15);
+      const zombieNormalMan = new Enemy(matrixZombieNormalMan, imageZombieNormalMan, soundZombieNormalMan, width, 30, 110, 150, 250, 465, 9, 'enemy');
+      const zombieMohawk = new Enemy(matrixZombieMohawk, imageZombieMohawk, soundZombieMohawk, width, 30, 110, 150, 330, 465, 15, 'enemy');
       
-      enemies.push(zombieNormalMan);
-      enemies.push(zombieMohawk);
+      this.objectMappedArray.push(zombieNormalMan);
+      this.objectMappedArray.push(zombieMohawk);
+      this.objectMappedArray.push(potionDoubleJump);
+      this.objectMappedArray.push(potionLife);
+      this.objectMappedArray.push(potionInvencible);
 
       // //instantiate life
       life = new Life(manipulateMapping.characterSettings.maximumLife, manipulateMapping.characterSettings.startLife);
@@ -55,68 +66,100 @@ class Game{
         
     //call animal methods
     leftBee.show();
-    leftBee.move()
-        
-    // call enemy methods
-    const currentLine = this.mapping[enemyIndex];
-    const enemy = enemies[currentLine.enemy];
-    const visibleEnemy = enemy.charX  < -enemy.charWidth;
-    
-    enemy.speed = currentLine.enemySpeed;
-    enemy.show();
-    enemy.move();
-     
-     
-    
-      
-    if(visibleEnemy){
-      enemyIndex++;
-      
-       
-      enemy.appear();
-   
-      if(enemyIndex > this.mapping.length - 1){
-        enemyIndex = 0;
-      }
-    }
-    
-    if(boy.isColliding(enemy)){
-      life.looseLife();   
-      boy.beInvencible();
-      soundDeath.play();
-        
-      //game over
-      if(life.lifes === 0){
-        soundCity.stop();
-        soundWind.stop();
-        soundGameOver.loop();
-        
-        isDead = true;
-        
-        image(imageGameOver, width/2 - 200, height/3);
-        
-        this._button();
-        
-        noLoop();
-      }
-    }
+    leftBee.move();
 
-    //call coin method
+    //call items method
     coin.show();
     coin.move();
+
+    // call object methods
+    const currentLine = this.mapping[this.objectIndex];
+    this.objectMapped  = this.objectMappedArray[currentLine.object];
+    const visibleObject = this.objectMapped.charX  < -this.objectMapped.charWidth;
+    
+    this.objectMapped.speed = currentLine.objectSpeed;
+    this.objectMapped.show();
+    this.objectMapped.move();
+   
+    if(visibleObject){
+      this.objectIndex++;
+   
+      this.objectMapped.appear();
+   
+      if(this.objectIndex > this.mapping.length - 1){
+        this.objectIndex = 0;
+      }
+    }
+    if(this.objectMappedArray[currentLine.object].type === 'enemy' ){
+    
+      //collide if an enemy
+      if(boy.isColliding(this.objectMapped)){
+        life.looseLife();   
+        boy.beInvencibleByDamage();
+        soundDeath.play();
+        
+        //game over
+        if(life.lifes === 0){
+          soundCity.stop();
+          soundWind.stop();
+          soundGameOver.loop();
+        
+          isDead = true;
+        
+          image(imageGameOver, width/2 - 200, height/3);
+        
+          this._button();
+        
+          noLoop();
+        }
+      }
+    }//collide if doubleJump
+    else if(this.objectMappedArray[currentLine.object].type === 'doubleJump'){
+      
+      if(boy.isItemColliding(this.objectMapped)){
+        isDoubleJump = true;
+        soundCoin.play();
+        this.objectMapped.charX = -10*this.objectMapped.charHeight;
+      }
+
+    }//collide if life
+    else if(this.objectMappedArray[currentLine.object].type === 'life'){
+      if(boy.isItemColliding(this.objectMapped)){
+        life.lifeUp();
+        soundCoin.play();
+        this.objectMapped.charX = -10*this.objectMapped.charHeight;
+      }
+    }//collide if an invencibility
+    else{
+      if(boy.isItemColliding(this.objectMapped)){
+        boy.beInvencibleByPotion();
+        soundCoin.play();
+        this.objectMapped.charX = -10*this.objectMapped.charHeight;
+      }
+    }
 
     if(boy.isItemColliding(coin)){
       score.addCoinScore()
       soundCoin.play();
-      coin.charX = -10*coin.charHeight
+      coin.charX = -10*coin.charHeight;
     }
-
   }
 
   _button(){
-  
     this.restartButton = new ButtonManager('Restart', width/2.2, height/2);
-      
     this.restartButton.draw();
+  }
+
+  restart(){
+    isDead = false
+    score.score = 0;
+    life.lifes = 3
+    soundGameOver.stop();
+    soundCity.loop();
+    boy.y  = height - boy.charHeight - boy.charY;
+    this.objectMapped.charX = -10*this.objectMapped.charHeight;
+    coin.charX = -10*coin.charHeight;
+    this.objectIndex = 0
+    loop();
   }
 }

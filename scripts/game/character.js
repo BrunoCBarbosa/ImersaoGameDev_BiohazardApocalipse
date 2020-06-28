@@ -15,10 +15,21 @@ class Character extends Animation{
   }
   
   jump(){
-    if(this.jumps < 1){
-      this.jumpSpeed = this.jumpHeight;
-      this.jumps++;
-      soundJump.play(); 
+    if(!isDoubleJump){
+      if(this.jumps < 1){
+        this.jumpSpeed = this.jumpHeight;
+        this.jumps++;
+        soundJump.play(); 
+      }
+    }else{
+      if(this.jumps < 2){
+        this.jumpSpeed = this.jumpHeight;
+        this.jumps++;
+        soundJump.play();
+        setTimeout(() => {
+          isDoubleJump = false;
+        }, 20000)
+      }
     }
   }
   
@@ -32,11 +43,28 @@ class Character extends Animation{
     }
   }
 
-  beInvencible(){
-    this.invencible = true;
-    setTimeout(() => {
-      this.invencible = false
-    }, 1000)
+  beInvencibleByDamage(){
+    if(!this.invencible){
+      this.invencible = true;
+      setTimeout(() => {
+        this.invencible = false
+      }, 1000)
+    }
+  }
+
+  beInvencibleByPotion(){
+    if(!this.invencible){
+      this.invencible = true;
+      setTimeout(() => {
+        this.invencible = false;
+      }, 20000)
+    }else{
+      this.invencible = false;
+      this.invencible = true;
+      setTimeout(() => {
+        this.invencible = false;
+      }, 20000)
+    }
   }
   
   isColliding(enemy){
