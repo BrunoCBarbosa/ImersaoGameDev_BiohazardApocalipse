@@ -40,6 +40,7 @@ let isDead = false;
 // let enemyIndex;
 let life;
 let manipulateMapping;
+next = 0;
 
 //items
 let coin;

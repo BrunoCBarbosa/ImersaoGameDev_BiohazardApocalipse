@@ -1,57 +1,72 @@
 class Intro{
     constructor(){
         // this.next = 0;
-        // this.intro = [];
+        this.intro = [];
     }
 
     setup(){
        soundMainScreen.stop();
        soundIntro.loop();
-        // this.buttonNext = new ButtonManager('Próximo', width/2, height/2);
-        this.buttonBegin = new ButtonManager('Begin',width/2.2, height/1.4);
+        this.buttonNext = new ButtonManager('NEXT', width/2.2, height/1.5);
+        // this.buttonBegin = new ButtonManager('Begin',width/2.2, height/1.4);
 
-        // this.intro.push(imageIntro1);
-        // this.intro.push(imageIntro2);
-        // this.intro.push(imageIntro3);
-        // this.intro.push(imageIntro4);
+        this.intro.push(imageIntro1);
+        this.intro.push(imageIntro2);
+        this.intro.push(imageIntro3);
+        this.intro.push(imageIntro4);
         
     }
 
     draw(){
-        // if(this.next < 4){
-        //     this._imageBackGround();
-        //     this._nextButton();
-        // }else{
+        this._nextButton();
         this._imageBackGround();
-        this._beginButton()
         this._text();
-        // }
+        
+        
     }
 
     _imageBackGround(){
-        image(imageIntro4, 0, 0, width, height);
+        image(this.intro[next], 0, 0, width, height);
     }
 
     _text(){
         textFont(fontMainScreen);
         textAlign(CENTER);
         textSize(50);
-        text("Squire City, a giant metropolis ", width/2, height/4);
-        text("controlled by a great pharmaceutical industry, ", width/2, height/3);
-        text("a day an explosion ocurred, infecting all citizens,", width/2, height/2.4);
-        text("turned them into undead, and devasting it.", width/2, height/2);
-        text("Now, you're the last survivor, and must escape from this terror", width/2, height/1.7);
-        text("as hurry as you can.", width/2, height/1.5);
-
+       
+        if(next == 0){
+            text("Squire City, a big and movimented metropolis,", width/2, height/4);
+            text("controlled by a great pharmaceutical industry.", width/2, height/3);
+        }
+        if(next == 1){
+            text("A day, an weird explosion ocurred in that industry,", width/2, height/4);
+            text("covering all the city with a black and bih smoke,", width/2, height/3);
+            text("and spreading its waste into the swears.", width/2, height/2.5);
+            text("In a few hours all the citizens, start to feel bad.", width/2, height/2);
+        }
+        if(next == 2){
+            text("Filling all the hospitals. But in in a few hours,", width/2, height/4);
+            text("inexplicably some people start to die,", width/2, height/3);
+            text("but not completely, until the night, they start to get up.", width/2, height/2.5);
+        }
+        if(next == 3){
+            text("Turned them into undead, ating all the citizens, and infecting them,", width/2, height/4);
+            text("begining a caos, and the end of Squire City.", width/2, height/3);
+            text("Now, you're the last survivor, and must escape from this terror", width/2, height/2.5);
+            text("as hurry as you can.", width/2, height/2);
+    
+        }
+       
 
        
     }
 
-    // _nextButton(){
-    //     this.buttonNext.draw()
-    // }
+    _nextButton(){
+        this.buttonNext.draw()
+    }
 
     _beginButton(){
+    
         // this.buttonBegin.positionY =  height / 1 ;
         this.buttonBegin.draw();
     }

@@ -49,6 +49,7 @@ class Game{
   }
   
   draw(){
+
     //call scenario methods
     scenario.show();
     scenario.move();

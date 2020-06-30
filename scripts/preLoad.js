@@ -1,6 +1,6 @@
 //function that load before everythings
 function preload() {
-    imageIntro1 = loadImage('assets/images/backgrounds/intro/intro1.png');
+    imageIntro1 = loadImage('assets/images/backgrounds/intro/intro1.jpg');
     imageIntro2 = loadImage('assets/images/backgrounds/intro/intro2.jpg');
     imageIntro3 = loadImage('assets/images/backgrounds/intro/intro3.jpg');
     imageIntro4 = loadImage('assets/images/backgrounds/intro/intro4.png');

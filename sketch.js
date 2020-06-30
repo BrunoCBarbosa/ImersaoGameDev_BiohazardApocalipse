@@ -21,7 +21,7 @@ function setup() {
     mainScreen
   };
 
-  buttonManager = new ButtonManager('Start', width/2.2, height/2.5);
+  buttonManager = new ButtonManager('Start', width/2.2, height/1.8);
 }
 
 function keyPressed(){
