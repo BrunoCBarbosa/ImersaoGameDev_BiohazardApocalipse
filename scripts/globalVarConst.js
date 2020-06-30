@@ -8,6 +8,7 @@ let imageBackGroundSubway;
 let imageMainScreen;
 let imageBoy;
 let imageZombieNormalMan;
+let imageZombieNormalWoman;
 let imageZombieMohawk;
 let imageGameOver;
 let imageBee;
@@ -90,6 +91,27 @@ const matrixZombieNormalMan = [
   [1200, 15],
   [1200, 15],
   [1200, 15]
+];
+
+const matrixZombieNormalWoman = [
+  [0, 15],
+  [0, 15],
+  [0, 15],
+  [260, 15],
+  [260, 15],
+  [260, 15],
+  [500, 15],
+  [500, 15],
+  [500, 15],
+  [735, 15],
+  [735, 15],
+  [735, 15],
+  [1010, 15],
+  [1010, 15],
+  [1010, 15],
+  [1300, 15],
+  [1300, 15],
+  [1300, 15],
 ]
 
 const matrixZombieMohawk = [
@@ -111,7 +133,7 @@ const matrixZombieMohawk = [
   [1700, 15],
   [1700, 15],
   [1700, 15]
-]
+];
 
 const matrixBeeLeft = [
   [30,235],

@@ -28,7 +28,7 @@ class Character extends Animation{
         soundJump.play();
         setTimeout(() => {
           isDoubleJump = false;
-        }, 20000)
+        }, 10000)
       }
     }
   }

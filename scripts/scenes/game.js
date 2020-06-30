@@ -29,9 +29,11 @@ class Game{
     
       //enemies 
       const zombieNormalMan = new Enemy(matrixZombieNormalMan, imageZombieNormalMan, soundZombieNormalMan, width, 30, 110, 150, 250, 465, 9, 'enemy');
+      const zombieNormalWoman = new Enemy(matrixZombieNormalWoman, imageZombieNormalWoman, soundZombieNormalMan, width, 30, 110, 150, 250, 465, 9, 'enemy');
       const zombieMohawk = new Enemy(matrixZombieMohawk, imageZombieMohawk, soundZombieMohawk, width, 30, 110, 150, 330, 465, 15, 'enemy');
       
       this.objectMappedArray.push(zombieNormalMan);
+      this.objectMappedArray.push(zombieNormalWoman);
       this.objectMappedArray.push(zombieMohawk);
       this.objectMappedArray.push(potionDoubleJump);
       this.objectMappedArray.push(potionLife);
