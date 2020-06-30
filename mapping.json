@@ -14,44 +14,49 @@
             "objectSpeed": 9
         },
         {
-            "object": 0,
-            "objectSpeed": 12
-        },
-        {
-            "object": 2,
-            "objectSpeed": 9
-        },
-        {
             "object": 1,
-            "objectSpeed": 20
-        },
-        {
-            "object": 0,
-            "objectSpeed": 9
+            "objectSpeed": 12
         },
         {
             "object": 3,
             "objectSpeed": 9
         },
         {
-            "object": 1,
+            "object": 2,
             "objectSpeed": 20
         },
         {
+            "object": 0,
+            "objectSpeed": 9
+        },
+        {
             "object": 4,
+            "objectSpeed": 9
+        },
+        {
+            "object": 2,
+            "objectSpeed": 20
+        },
+        {
+            "object": 5,
             "objectSpeed": 50
         },
         {
-            "object": 0,
+            "object": 1,
             "objectSpeed": 15
         
         },
         {
-            "object": 1,
+            "object": 2,
             "objectSpeed": 20
         },
         {
             "object": 1,
+            "objectSpeed": 15
+        },
+
+        {
+            "object": 2,
             "objectSpeed": 40
         }
     ]

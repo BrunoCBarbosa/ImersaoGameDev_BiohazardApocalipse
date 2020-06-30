@@ -11,6 +11,7 @@ function setup() {
   
   //instantiate game
   game = new Game();
+  // game.setup();
 
   intro = new Intro();
   

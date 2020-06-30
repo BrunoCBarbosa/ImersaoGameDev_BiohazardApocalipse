@@ -10,6 +10,7 @@ function preload() {
     imageBoy = loadImage('assets/images/characters/boy.png');
     
     imageZombieNormalMan = loadImage('assets/images/enemies/zombie_normal_man.png');
+    imageZombieNormalWoman = loadImage('assets/images/enemies/zombie_normal_woman.png');
     imageZombieMohawk = loadImage('assets/images/enemies/zombie_mohawk.png');
 
     imageMainScreen = loadImage('assets/images/assets/main_menu_background.png');   
