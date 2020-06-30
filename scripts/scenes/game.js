@@ -39,7 +39,6 @@ class Game{
 
       // //instantiate life
       life = new Life(manipulateMapping.characterSettings.maximumLife, manipulateMapping.characterSettings.startLife);
-
   }
   
   keyPressed(key){
@@ -49,6 +48,7 @@ class Game{
   }
   
   draw(){
+
     //call scenario methods
     scenario.show();
     scenario.move();
@@ -67,6 +67,12 @@ class Game{
     //call animal methods
     leftBee.show();
     leftBee.move();
+
+     
+    if(instructions){
+      this.instruction();
+    }
+    
 
     //call items method
     coin.show();
@@ -118,7 +124,7 @@ class Game{
       
       if(boy.isItemColliding(this.objectMapped)){
         isDoubleJump = true;
-        soundCoin.play();
+        soudPotionDoubleJump.play();
         this.objectMapped.charX = -10*this.objectMapped.charHeight;
       }
 
@@ -126,14 +132,14 @@ class Game{
     else if(this.objectMappedArray[currentLine.object].type === 'life'){
       if(boy.isItemColliding(this.objectMapped)){
         life.lifeUp();
-        soundCoin.play();
+        soudPotionLife.play();
         this.objectMapped.charX = -10*this.objectMapped.charHeight;
       }
     }//collide if an invencibility
     else{
       if(boy.isItemColliding(this.objectMapped)){
         boy.beInvencibleByPotion();
-        soundCoin.play();
+        soudPotionInvencibility.play();
         this.objectMapped.charX = -10*this.objectMapped.charHeight;
       }
     }
@@ -148,6 +154,29 @@ class Game{
   _button(){
     this.restartButton = new ButtonManager('Restart', width/2.2, height/2);
     this.restartButton.draw();
+  }
+
+  _startButton(){
+    this.beginButton = new ButtonManager('Begin', width/2.2, height/1.5);
+    this.beginButton.draw();
+  }
+
+  instruction(){
+    noLoop();
+    this._textInstruction();
+    this._startButton();
+  }
+
+  _textInstruction(){
+    textFont(fontMainScreen);
+    textAlign(CENTER);
+    textSize(100);
+    text("Instructions:", width/2, height/4);
+    textSize(50);
+    text("Jump: Button Up", width/2, height/3);
+    text("Blue Potion: Double Jump", width/2, height/2.5);
+    text("Red Potion: Life Up", width/2, height/2);
+    text("Yellow Potion: Invencibility", width/2, height/1.7);
   }
 
   restart(){

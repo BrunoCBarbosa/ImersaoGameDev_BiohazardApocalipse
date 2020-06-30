@@ -1,23 +1,24 @@
 class MainScreen{
+    
     constructor(){
-
+        this.Option = 'mainScreen'
     }
 
     setup(){
-        soundMainScreen.loop()
+        // soundMainScreen.loop()
     }
 
     draw(){
         this._imageBackground();
-        this._text();
-        this._button();
+        this._textTitle();
+        this._buttonStart();
     }
 
     _imageBackground(){
         image(imageMainScreen, 0, 0, width, height);
     }
 
-    _text(){
+    _textTitle(){
         textFont(fontMainScreen);
         textAlign(CENTER);
         textSize(100);
@@ -26,8 +27,15 @@ class MainScreen{
         text("Apocalipse", width/2, height/3.5);
     }
 
-    _button(){
-        
+    _textInstructions(){
+        textFont(fontMainScreen);
+        textAlign(CENTER);
+        textSize(100);
+        text("Instructions", width/2, height/4);
+    }
+
+    _buttonStart(){
         buttonManager.draw();
     }
+
 }

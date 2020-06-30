@@ -1,63 +1,72 @@
 class ButtonManager{
-    constructor(text, positionX, positionY){
-        this.text = text;
-        this.positionX = positionX;
-        this.positionY = positionY;
-
-        this.button = createButton(this.text);
-        this.button.addClass(('botao-tela-inicial'));
-       
-        if(currentScene === 'mainScreen'){
-            this.button.mousePressed(() => this._goIntro());
-        }
-        
-        if(currentScene === 'intro'){
-            this.button.mousePressed(() => this._startGame());
-        }
-
-        if(currentScene === 'game'){
-            this.button.mousePressed(() => this._restartStage());
-        }
-
-        // else{
-            
-        //     this.button.mousePressed(() => this._restartStage());
-        // }
+  constructor(text, positionX, positionY){
+    this.text = text;
+    this.positionX = positionX;
+    this.positionY = positionY;
+		
+		this.button = createButton(this.text);
+    this.button.addClass(('botao-tela-inicial'));
+    
+    if(currentScene === 'mainScreen'){
+      this.button.mousePressed(() => this._goIntro());
     }
+		
+		if(currentScene === 'intro'){
+      this.button.mousePressed(() => this._nextIntro());
+		}
 
-    setup(){
-        //instantiate class game and load setup from class game
-        mainScreen = new MainScreen();
-        game = new Game();
-
-        intro = new Intro();
-  
+		if(currentScene === 'game' && instructions){
+      this.button.mousePressed(() => this._beginGame());
     }
-
-    draw(){
-        this.button.position(this.positionX, this.positionY);
-        // this.button.center();
+    
+    if(currentScene === 'game' && !instructions){
+      this.button.mousePressed(() => this._restartStage());
     }
+	}
+		
+  draw(){
+  	this.button.position(this.positionX, this.positionY);
+  }
 
-    _goIntro(){
-        this.button.remove();
-        currentScene = 'intro';
-        intro.setup(); 
+  _goIntro(){
+  	this.button.remove();
+    currentScene = 'intro';
+    intro.setup(); 
+  }
 
+  _nextIntro(){
+  	next++;
+	
+    if(next == 4){
+    	this._startGame()
     }
+	}
+	
+	// createBeginButton(){
+	// 	this.button = createButton('BEGIN');
+	// 	this.button.addClass(('botao-tela-inicial'));	
+	// 	this.button = this.positionX;
+	// 	this.button = this.positionY;
+	// }
  
-    _startGame(){
-        this.button.remove();
-        currentScene = 'game';
-        game.setup(); 
-    }
+  _startGame(){
+    this.button.remove();
+    currentScene = 'game';
+    game.setup(); 
+	}
+	
+	_beginGame(){
+		this.button.remove();
+		instructions = false;
+		loop();
+	}
 
-    _mainScreen(){
-        window.location.reload();
-    }
+  _mainScreen(){
+  	window.location.reload();
+  }
 
-    _restartStage(){
-        this.button.remove();
-        game.restart();
-    }
+  _restartStage(){
+  	this.button.remove();
+    game.restart();
+  }
 }
