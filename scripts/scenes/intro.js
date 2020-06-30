@@ -65,9 +65,4 @@ class Intro{
         this.buttonNext.draw()
     }
 
-    _beginButton(){
-    
-        // this.buttonBegin.positionY =  height / 1 ;
-        this.buttonBegin.draw();
-    }
 }

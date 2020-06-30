@@ -1,4 +1,5 @@
 class MainScreen{
+    
     constructor(){
         this.Option = 'mainScreen'
     }
@@ -37,4 +38,4 @@ class MainScreen{
         buttonManager.draw();
     }
 
-  }
+}

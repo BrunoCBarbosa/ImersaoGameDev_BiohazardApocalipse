@@ -29,12 +29,16 @@ function preload() {
     soundIntro = loadSound('assets/sounds/background/intro.mp3')
     soundCity = loadSound('assets/sounds/background/city.mp3');
     soundGameOver = loadSound('assets/sounds/background/game_over.mp3');
+   
     
     soundZombieNormalMan = loadSound('assets/sounds/fx/zombie_normal_man.mp3');;
     soundZombieMohawk = loadSound('assets/sounds/fx/zombie_mohawk.mp3');;
     soundJump = loadSound('assets/sounds/fx/jump.mp3');
     soundDeath = loadSound('assets/sounds/fx/death.mp3');
     soundCoin = loadSound('assets/sounds/fx/coin.mp3');
+    soudPotionDoubleJump = loadSound('assets/sounds/fx/double_jump_potion.wav');
+    soudPotionLife = loadSound('assets/sounds/fx/life_potion.flac');
+    soudPotionInvencibility = loadSound('assets/sounds/fx/invencibility_potion.wav');
     
     soundWind = loadSound('assets/sounds/other/wind.mp3');
 

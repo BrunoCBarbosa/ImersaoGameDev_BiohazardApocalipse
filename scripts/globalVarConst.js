@@ -27,6 +27,9 @@ let soundGameOver;
 let soundCoin;
 let soundZombieNormalMan;
 let soundZombieMohawk;
+let soudPotionDoubleJump;
+let soudPotionLife;
+let soudPotionInvencibility;
 
 let buttonManager;
 let fontMainScreen;
@@ -40,7 +43,8 @@ let isDead = false;
 // let enemyIndex;
 let life;
 let manipulateMapping;
-next = 0;
+let next = 0;
+let instructions = true;
 
 //items
 let coin;
