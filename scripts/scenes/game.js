@@ -48,7 +48,7 @@ class Game{
         boy.jump();
     }
   }
-  
+
   draw(){
 
     //call scenario methods
@@ -101,9 +101,9 @@ class Game{
     if(this.objectMappedArray[currentLine.object].type === 'enemy' ){
     
       //collide if an enemy
-      if(boy.isColliding(this.objectMapped)){
+      if(boy.isColliding(true, this.objectMapped,  0.5, 30, 30, 40, 30)){
         life.looseLife();   
-        boy.beInvencibleByDamage();
+        boy.beInvencible(1000);
         soundDeath.play();
         
         //game over
@@ -124,7 +124,7 @@ class Game{
     }//collide if doubleJump
     else if(this.objectMappedArray[currentLine.object].type === 'doubleJump'){
       
-      if(boy.isItemColliding(this.objectMapped)){
+      if(boy.isColliding(false, this.objectMapped,  0.5, 0, 0, 0, 0)){
         isDoubleJump = true;
         soudPotionDoubleJump.play();
         this.objectMapped.charX = -10*this.objectMapped.charHeight;
@@ -132,21 +132,21 @@ class Game{
 
     }//collide if life
     else if(this.objectMappedArray[currentLine.object].type === 'life'){
-      if(boy.isItemColliding(this.objectMapped)){
+      if(boy.isColliding(false, this.objectMapped,  0.5, 0, 0, 0, 0)){
         life.lifeUp();
         soudPotionLife.play();
         this.objectMapped.charX = -10*this.objectMapped.charHeight;
       }
     }//collide if an invencibility
     else{
-      if(boy.isItemColliding(this.objectMapped)){
-        boy.beInvencibleByPotion();
+      if(boy.isColliding(false, this.objectMapped,  0.5, 0, 0, 0, 0)){
+        boy.beInvencible(20000);
         soudPotionInvencibility.play();
         this.objectMapped.charX = -10*this.objectMapped.charHeight;
       }
     }
 
-    if(boy.isItemColliding(coin)){
+    if(boy.isColliding(false, coin,  0.5, 0, 0, 0, 0)){
       score.addCoinScore()
       soundCoin.play();
       coin.charX = -10*coin.charHeight;

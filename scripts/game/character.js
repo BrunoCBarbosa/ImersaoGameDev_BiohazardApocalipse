@@ -9,28 +9,36 @@ class Character extends Animation{
     this.jumps = 0;
     this.jumpSpeed = 0;
     this.jumpHeight = -40
+    
     this.gravity = 4;
     this.invencible = false;
     
   }
   
   jump(){
-    if(!isDoubleJump){
-      if(this.jumps < 1){
-        this.jumpSpeed = this.jumpHeight;
-        this.jumps++;
-        soundJump.play(); 
-      }
-    }else{
-      if(this.jumps < 2){
-        this.jumpSpeed = this.jumpHeight;
-        this.jumps++;
-        soundJump.play();
-        setTimeout(() => {
-          isDoubleJump = false;
-        }, 10000)
-      }
+    switch(isDoubleJump){
+      case true:
+        if(this.jumps < 2){
+          this._jumpCounter();
+       
+          setTimeout(() => {
+            isDoubleJump = false;
+          }, 10000)
+        }
+      break;
+      case false:
+        if(this.jumps < 1){
+          this._jumpCounter();
+         }
+      break;
+      default: console.log("Invalid value to isDpubleJump");
     }
+  }
+
+  _jumpCounter(){
+    this.jumpSpeed = this.jumpHeight;
+    this.jumps++;
+    playFx(soundJump); 
   }
   
   applyGravity(){
@@ -43,76 +51,34 @@ class Character extends Animation{
     }
   }
 
-  beInvencibleByDamage(){
-    if(!this.invencible){
-      this.invencible = true;
-      setTimeout(() => {
-        this.invencible = false
-      }, 1000)
-    }
+  beInvencible(time){
+    this.invencible = true;
+      
+    setTimeout(() => {
+      this.invencible = false;
+    }, time)
   }
 
-  beInvencibleByPotion(){
-    if(!this.invencible){
-      this.invencible = true;
-      setTimeout(() => {
-        this.invencible = false;
-      }, 20000)
-    }else{
-      this.invencible = false;
-      this.invencible = true;
-      setTimeout(() => {
-        this.invencible = false;
-      }, 20000)
-    }
-  }
-  
-  isColliding(enemy){
-    if(this.invencible){
+  isColliding(isEnemy, target, precision, sumHeroCharX, sumHeroY, sumTargetCharX, sumTargetY){
+    if(isEnemy && this.invencible){
       return false;
     }
-
-    const precision = 0.5;
-    // rect( this.charX +30, 
-    //   this.y + 30, 
-    //   this.charWidth * precision,
-    //   this.charHeight * precision,
-    // )
-    // rect(      enemy.charX  +40, 
-    //   enemy.y +30 , 
-    //   enemy.charWidth * precision,
-    //   enemy.charHeight * precision)
-   
-    const collision = collideRectRect(
-      this.charX +30, 
-      this.y + 30, 
-      this.charWidth * precision,
-      this.charHeight * precision,
-      enemy.charX  +40, 
-      enemy.y +30 , 
-      enemy.charWidth * precision,
-      enemy.charHeight * precision
-    )
-
-    
+  
+    const collision = this._doCollisionRectRect(target, precision, sumHeroCharX, sumHeroY, sumTargetCharX, sumTargetY)
 
     return collision;
   }
 
-  isItemColliding(item){
-    const precision = 0.5;
-   
-    const Collision = collideRectRect(
-      this.charX,
-      this.y,
+  _doCollisionRectRect(target, precision, sumHeroCharX, sumHeroY, sumTargetCharX, sumTargetY){
+    return collideRectRect(
+      this.charX + sumHeroCharX, 
+      this.y + sumHeroY, 
       this.charWidth * precision,
       this.charHeight * precision,
-      item.charX,
-      item.y,
-      item.charWidth * precision,
-      item.charHeight * precision
+      target.charX  + sumTargetCharX, 
+      target.y + sumTargetY , 
+      target.charWidth * precision,
+      target.charHeight * precision
     )
-
-    return Collision
   }
 }

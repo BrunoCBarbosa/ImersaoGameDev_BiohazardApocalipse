@@ -5,7 +5,8 @@ class MainScreen{
     }
 
     setup(){
-        soundMainScreen.loop()
+        playBackgroundSound(soundMainScreen);
+        // soundMainScreen.loop()
     }
 
     draw(){
