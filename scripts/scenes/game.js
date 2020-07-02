@@ -23,9 +23,9 @@ class Game{
       leftBee = new Animal(matrixBeeLeft, imageBee, width -52, 500, 10, 20, 150, 150, 5, 500);
 
       coin = new Item(matrixCoin, imageCoin, width, 200, 50, 50, 150, 150, 5, 2000);
-      const potionDoubleJump = new Potion(matrixPotionDoubleJump, imagePotionDoubleJump, width, 200, 40, 40, 300, 350, 5, 'doubleJump');
-      const potionLife = new Potion(matrixPotionLife, imagePotionLife, width, 200, 40, 40, 300, 350, 5, 'life');
-      const potionInvencible = new Potion(matrixPotionInvencible, imagePotionInvencible, width, 200, 40, 40, 300, 350, 5, 'invencibility');
+      const potionDoubleJump = new Potion(5, 'doubleJump');
+      const potionLife = new Potion(5, 'life');
+      const potionInvencible = new Potion(5, 'invencibility');
     
       //enemies 
       const zombieNormalMan = new Enemy(matrixZombieNormalMan, imageZombieNormalMan, soundZombieNormalMan, width, 30, 110, 150, 250, 465, 9, 'enemy');
@@ -39,7 +39,9 @@ class Game{
       this.objectMappedArray.push(potionLife);
       this.objectMappedArray.push(potionInvencible);
 
-      // //instantiate life
+      console.log(this.objectMappedArray)
+
+      //instantiate life
       life = new Life(manipulateMapping.characterSettings.maximumLife, manipulateMapping.characterSettings.startLife);
   }
   
@@ -99,7 +101,7 @@ class Game{
       }
     }
     if(this.objectMappedArray[currentLine.object].type === 'enemy' ){
-    
+     
       //collide if an enemy
       if(boy.isColliding(true, this.objectMapped,  0.5, 30, 30, 40, 30)){
         life.looseLife();   
@@ -123,7 +125,6 @@ class Game{
       }
     }//collide if doubleJump
     else if(this.objectMappedArray[currentLine.object].type === 'doubleJump'){
-      
       if(boy.isColliding(false, this.objectMapped,  0.5, 0, 0, 0, 0)){
         isDoubleJump = true;
         soudPotionDoubleJump.play();

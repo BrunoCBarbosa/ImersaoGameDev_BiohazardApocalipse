@@ -13,8 +13,8 @@ class Animation{
     this.currentFrame = 0;  
   }
   
+  //Function to load the character      
   show(){
-    //Function to load the character      
     image(
       this.image, 
       this.charX, 

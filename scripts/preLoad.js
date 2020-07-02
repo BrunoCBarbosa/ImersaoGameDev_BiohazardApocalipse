@@ -16,14 +16,10 @@ function preload() {
     imageMainScreen = loadImage('assets/images/assets/main_menu_background.png');   
     fontMainScreen = loadFont('assets/images/assets/fonteTelaInicial.otf ');   
     imageGameOver = loadImage('assets/images/assets/game-over.png');
-    imageLife = loadImage('assets/images/assets/coracao.png');
     
     imageBee = loadImage('assets/images/others/bee.png');
 
     imageCoin = loadImage('assets/images/items/coin.png');
-    imagePotionDoubleJump = loadImage('assets/images/items/potion_blue.png');
-    imagePotionInvencible = loadImage('assets/images/items/potion_yellow.png');
-    imagePotionLife = loadImage('assets/images/items/potion_red.png');
     
     //SOUNDS
     soundMainScreen = loadSound('assets/sounds/background/main.mp3');
